@@ -109,21 +109,19 @@ def train_best_model(
 
         mlflow.xgboost.log_model(booster, artifact_path="models_mlflow")
 
-        markdown__rmse_report = f"""# RMSE Report
-        ## Summary
+        rmse_report = f"""# RMSE Report
+## Summary
 
-        Duration Prediction 
+Duration Prediction 
 
-        ## RMSE XGBoost Model
+## RMSE XGBoost Model
 
-        | Region    | RMSE |
-        |:----------|-------:|
-        | {date.today()} | {rmse:.2f} |
-        """
+| Region    | RMSE    |
+|:----------|-------: |
+| {date.today()} | {rmse:.2f} |
+"""
 
-        create_markdown_artifact(
-            key="duration-model-rmse-report", markdown=markdown__rmse_report
-        )
+        create_markdown_artifact(key="duration-model-rmse-report", markdown=rmse_report)
 
     return None
 
